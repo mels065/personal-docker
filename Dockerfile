@@ -9,8 +9,8 @@ MAINTAINER Brandon Mellus <mellusbrandon@gmail.com>
 
 RUN apt-get update 
 RUN apt-get -y upgrade
-RUN apt-get install linux-image-extra-`uname -r`
-RUN apt-get install sed
+RUN apt-get -y install linux-image-extra-`uname -r` 
+RUN apt-get -y install perl
 
 # Add Docker Repo Key
 RUN apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
@@ -25,8 +25,8 @@ RUN apt-get update
 RUN apt-get install docker-engine
 
 # UFW
-# RUN sed 's/DEFAULT_FORWARD_POLICY="DROP"/DEFAULT_FORWARD_POLICY="ACCEPT"/' /etc/default/ufw
-# RUN ufw reload
+RUN perl -pi -e 's/DEFAULT_FORWARD_POLICY="DROP"/DEFAULT_FORWARD_POLICY="ACCEPT"/g' etc/default/ufw
+RUN ufw reload
 
 # Run Docker
 RUN docker daemon &
