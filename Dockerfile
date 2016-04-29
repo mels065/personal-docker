@@ -22,7 +22,7 @@ RUN echo "deb https://apt.dockerproject.org/repo ubuntu-trusty main" | sudo tee 
 RUN apt-get update
 
 # Install Docker
-RUN apt-get install docker-engine
+RUN apt-get -y install docker-engine
 
 # UFW
 RUN perl -pi -e 's/DEFAULT_FORWARD_POLICY="DROP"/DEFAULT_FORWARD_POLICY="ACCEPT"/g' etc/default/ufw
