@@ -9,7 +9,7 @@ MAINTAINER Brandon Mellus <mellusbrandon@gmail.com>
 
 RUN apt-get update 
 RUN apt-get -y upgrade
-RUN apt-get -y install linux-image-extra-`uname -r` 
+RUN apt-get -y install linux-image-extra-$(uname -r)
 RUN apt-get -y install perl
 
 # Add Docker Repo Key
