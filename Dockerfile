@@ -9,8 +9,9 @@ MAINTAINER Brandon Mellus <mellusbrandon@gmail.com>
 
 RUN apt-get update 
 RUN apt-get -y upgrade
+RUN apt-get -y install grub-pc
 RUN apt-get -y install linux-image-extra-$(uname -r)
-RUN apt-get install perl
+RUN apt-get -y install perl
 
 # Add Docker Repo Key
 RUN apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
@@ -22,7 +23,7 @@ RUN echo "deb https://apt.dockerproject.org/repo ubuntu-trusty main" | sudo tee 
 RUN apt-get update
 
 # Install Docker
-RUN apt-get install docker-engine
+RUN apt-get -y install docker-engine
 
 # UFW
 RUN perl -pi -e 's/DEFAULT_FORWARD_POLICY="DROP"/DEFAULT_FORWARD_POLICY="ACCEPT"/g' etc/default/ufw
